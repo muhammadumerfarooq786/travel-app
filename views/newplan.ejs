@@ -1,0 +1,126 @@
+<!-- addnew.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/homepage.css" />
+    <link rel="stylesheet" href="./css/newplan.css" />
+    <title>Plan New Travel</title>
+  </head>
+  <body>
+    <% if (!travelSession) { %>
+    <script>
+      window.location.href = "/";
+    </script>
+    <% } else { %>
+    <div id="userIdContainer" style="display: none">
+      <%= travelSession.userId %>
+    </div>
+
+    <div class="menu-bar">
+      <div class="logo">
+        <h3>Travel Planner</h3>
+      </div>
+      <div class="menu-options">
+        <a href="../new" id="createNewPlan">Create New Plan</a>
+        <a href="../action" id="viewActions">Actions</a>
+        <a href="../logout">Logout</a>
+      </div>
+      <div class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <form id="travelForm">
+        <div class="form-group">
+          <label for="travel_name">Travel Plan Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Travel Plan Name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="travel_date">Travel Date:</label>
+          <input type="date" id="travel_date" name="travel_date" required />
+        </div>
+
+        <div class="form-group" id="activitiesContainer">
+          <label for="activities_list">Activities List:</label>
+          <div class="activity-row">
+            <input
+              type="text"
+              class="activity_name"
+              placeholder="Activity Name"
+              required
+            />
+            <input
+              type="text"
+              class="activity_time"
+              placeholder="Activity Time"
+              required
+            />
+            <input
+              type="text"
+              class="activity_expense"
+              placeholder="Activity Expense"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="button" class="addmore" onclick="addActivity()">
+            Add Activity
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes:</label>
+          <textarea
+            id="notes"
+            name="notes"
+            placeholder="Enter notes"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="priority">Priority:</label>
+          <select id="priority" name="priority">
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+
+        <button type="button" class="addsubmit" onclick="submitTravel()">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById("travel_date").min = getCurrentDate();
+
+      // Function to get the current date in the format required for the min attribute in the date input
+      function getCurrentDate() {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, "0");
+        const mm = String(today.getMonth() + 1).padStart(2, "0"); // January is 0!
+        const yyyy = today.getFullYear();
+        return `${yyyy}-${mm}-${dd}`;
+      }
+    </script>
+
+    <script src="./js/homepage.js"></script>
+    <script src="./js/addnew.js"></script>
+
+    <% } %>
+  </body>
+</html>

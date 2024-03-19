@@ -1,0 +1,47 @@
+/* action.css */
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+}
+
+.menu-bar {
+  background-color: #45a049;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.menu-bar h3 {
+  margin: 10px;
+}
+
+.menu-options {
+  display: flex;
+  gap: 20px;
+}
+
+.container {
+  padding: 20px;
+}
+
+/* Add styles for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #45a049;
+  color: white;
+}
